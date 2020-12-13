@@ -1,0 +1,14 @@
+﻿  Render.cpp
+C:\Users\Mihail\Desktop\Материалы\Компьютерная графика\Курсовая\grafika_laba4-master\OpenGLrememberProj\Render.cpp(196,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Mihail\Desktop\Материалы\Компьютерная графика\Курсовая\grafika_laba4-master\OpenGLrememberProj\Render.cpp(275,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Mihail\Desktop\Материалы\Компьютерная графика\Курсовая\grafika_laba4-master\OpenGLrememberProj\Render.cpp(326,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Mihail\Desktop\Материалы\Компьютерная графика\Курсовая\grafika_laba4-master\OpenGLrememberProj\Render.cpp(832,12): warning C4018: >=: несоответствие типов со знаком и без знака
+C:\Users\Mihail\Desktop\Материалы\Компьютерная графика\Курсовая\grafika_laba4-master\OpenGLrememberProj\Render.cpp(1031,31): warning C4838: Преобразование из "double" в "GLfloat" требует сужающего преобразования.
+C:\Users\Mihail\Desktop\Материалы\Компьютерная графика\Курсовая\grafika_laba4-master\OpenGLrememberProj\Render.cpp(1031,40): warning C4838: Преобразование из "double" в "GLfloat" требует сужающего преобразования.
+C:\Users\Mihail\Desktop\Материалы\Компьютерная графика\Курсовая\grafika_laba4-master\OpenGLrememberProj\Render.cpp(1031,49): warning C4838: Преобразование из "double" в "GLfloat" требует сужающего преобразования.
+  Создание кода
+  0 of 1031 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  OpenGLrememberProj.vcxproj -> C:\Users\Mihail\Desktop\Материалы\Компьютерная графика\Курсовая\grafika_laba4-master\Release\OpenGLrememberProj.exe
