@@ -1,22 +1,11 @@
-﻿  GUItextRectangle.cpp
-  MyOGL.cpp
-  MyShaders.cpp
-  Object.cpp
-  ObjLoader.cpp
-  OpenGLrememberProj.cpp
-  Primitives.cpp
-  PrimitivesStatic.cpp
-  Render.cpp
+﻿  Render.cpp
 C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(131,21): warning C4018: <: несоответствие типов со знаком и без знака
 C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(208,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(259,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(757,12): warning C4018: >=: несоответствие типов со знаком и без знака
-C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(917,31): warning C4838: Преобразование из "double" в "GLfloat" требует сужающего преобразования.
-C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(917,40): warning C4838: Преобразование из "double" в "GLfloat" требует сужающего преобразования.
-C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(917,49): warning C4838: Преобразование из "double" в "GLfloat" требует сужающего преобразования.
-  Texture.cpp
-C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Texture.cpp(123,39): warning C4309: =: усечение константного значения
-  Создание кода...
-C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(609): warning C4715: AllButton::Where: значение возвращается не при всех путях выполнения
-C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(715): warning C4715: AllPlatform::Where: значение возвращается не при всех путях выполнения
+C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(264,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(775,12): warning C4018: >=: несоответствие типов со знаком и без знака
+C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(935,31): warning C4838: Преобразование из "double" в "GLfloat" требует сужающего преобразования.
+C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(935,40): warning C4838: Преобразование из "double" в "GLfloat" требует сужающего преобразования.
+C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(935,49): warning C4838: Преобразование из "double" в "GLfloat" требует сужающего преобразования.
+C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(627): warning C4715: AllButton::Where: значение возвращается не при всех путях выполнения
+C:\Users\Mihail\Documents\GitHub\CursProjKG\OpenGLrememberProj\Render.cpp(733): warning C4715: AllPlatform::Where: значение возвращается не при всех путях выполнения
   OpenGLrememberProj.vcxproj -> C:\Users\Mihail\Documents\GitHub\CursProjKG\Debug\OpenGLrememberProj.exe

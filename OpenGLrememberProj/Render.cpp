@@ -220,19 +220,24 @@ public:
 			if (lpoint4 <= 0.05)
 				lpoint4 = 0;
 
+			Vertexs[i] = Vertexs[i] - direction * lpoint1 * (((double)change / 10) * 0.8 + speed * 0.005);
+			Vertexs[i + 1] = Vertexs[i + 1] - direction * lpoint2 * (((double)change / 10) * 0.8 + speed * 0.005);
+			Vertexs[i + 2] = Vertexs[i + 2] - direction * lpoint3 * (((double)change / 10) * 0.8 + speed * 0.005);
+			Vertexs[i + 3] = Vertexs[i + 3] - direction * lpoint4 * (((double)change / 10) * 0.8 + speed * 0.005);
+
 			glTexCoord2d(u, v);
-			glVertex3dv((Vertexs[i] - direction * lpoint1 * (((double)change/10)*0.8 + speed * 0.01)).toArray());
+			glVertex3dv((Vertexs[i]).toArray());
 			glTexCoord2d(u + 0.2, v);
-			glVertex3dv((Vertexs[i + 1] - direction * lpoint2 * (((double)change / 10)*0.8 + speed * 0.01)).toArray());
+			glVertex3dv((Vertexs[i + 1]).toArray());
 			glTexCoord2d(u, v + 0.2);
-			glVertex3dv((Vertexs[i + 2] - direction * lpoint3 * (((double)change / 10)*0.8 + speed * 0.01)).toArray());
+			glVertex3dv((Vertexs[i + 2]).toArray());
 
 			glTexCoord2d(u + 0.2, v);
-			glVertex3dv((Vertexs[i + 1] - direction * lpoint2 * (((double)change / 10)*0.8 + speed * 0.01)).toArray());
+			glVertex3dv((Vertexs[i + 1]).toArray());
 			glTexCoord2d(u, v + 0.2);
-			glVertex3dv((Vertexs[i + 2] - direction * lpoint3 * (((double)change / 10)*0.8 + speed * 0.01)).toArray());
+			glVertex3dv((Vertexs[i + 2]).toArray());
 			glTexCoord2d(u + 0.2, v + 0.2);
-			glVertex3dv((Vertexs[i + 3] - direction * lpoint4 * (((double)change / 10)*0.8 + speed * 0.01)).toArray());
+			glVertex3dv((Vertexs[i + 3]).toArray());
 
 			if(numbP%4 == 0)
 				Particles.Add(Vertexs[i+numbP/4], dir, 10, speed);
@@ -347,6 +352,7 @@ public:
 	Vector3 eng_pos[4];
 	Vector3 direction;
 	Vector3 side;
+	Vector3 move;
 	double speed;
 	double turn;
 	double turnOdir;
@@ -364,6 +370,7 @@ public:
 		speed = 0;
 		turn = 0;
 		turnOdir = 0;
+		move = { 0,0,0 };
 	}
 
 	void reset()
@@ -373,6 +380,7 @@ public:
 		pos = { 2.8, 0, -0.6 };
 		speed = 0;
 		turn = 0;
+		move = { 0,0,0 };
 	}
 
 	double AN()
@@ -450,13 +458,13 @@ public:
 			}
 
 			flame.Move(eng_pos[0] + direction * -0.1, direction*-1 + Vector3(bias[vibr].X() * 0.01 * changebias, bias[vibr].Y() * 0.01, 0) * changebias,
-				speed, ToRad(turn), ToRad(AN()), ToRad(turnOdir), normal, direction, changeFlyme);
+				speed*5, ToRad(turn), ToRad(AN()), ToRad(turnOdir), normal, direction, changeFlyme);
 			flame.Move(eng_pos[1] + direction * -0.1, direction*-1 + Vector3(bias[vibr].X() * 0.01, bias[vibr].Y() * 0.01 * changebias, 0) * -changebias,
-				speed, ToRad(turn), ToRad(AN()), ToRad(turnOdir), normal, direction, changeFlyme);
+				speed*5, ToRad(turn), ToRad(AN()), ToRad(turnOdir), normal, direction, changeFlyme);
 			flame.Move(eng_pos[2] + direction * -0.1, direction*-1 + Vector3(bias[vibr].X() * 0.01 * -changebias, bias[vibr].Y() * 0.01, 0) * changebias,
-				speed, ToRad(turn), ToRad(AN()), ToRad(turnOdir), normal, direction, changeFlyme);
+				speed*5, ToRad(turn), ToRad(AN()), ToRad(turnOdir), normal, direction, changeFlyme);
 			flame.Move(eng_pos[3] + direction * -0.1, direction*-1 + Vector3(bias[vibr].X() * 0.01, bias[vibr].Y() * 0.01 * changebias, 0) * -changebias,
-				speed, ToRad(turn), ToRad(AN()), ToRad(turnOdir), normal, direction, changeFlyme);
+				speed*5, ToRad(turn), ToRad(AN()), ToRad(turnOdir), normal, direction, changeFlyme);
 
 			changeFlyme = ++changeFlyme % 10;
 		}
@@ -495,7 +503,17 @@ public:
 		if (speed >= 1)
 			real_speed = speed;
 		direction.normolize();
-		pos = {pos.X() + direction.X()/100 * real_speed, pos.Y() + direction.Y() / 100 * real_speed, pos.Z() + direction.Z() / 100 * real_speed };
+		if (speed >= 1)
+		{
+			Vector3 real_move = move;
+			move = move + Vector3(0, 0, -1) + direction * speed;
+			if (move.length() > 490)
+			{
+				move = move.normolize() * 490;
+			}
+			pos = pos + real_move * 0.05 * 0.02;
+		}
+		//pos = {pos.X() + direction.X()/100 * real_speed, pos.Y() + direction.Y() / 100 * real_speed, pos.Z() + direction.Z() / 100 * real_speed };
 		Draw();
 	}
 
@@ -1162,18 +1180,6 @@ void keyDownEvent(OpenGL *ogl, int key)
 		light.pos = camera.pos;
 	}
 
-	/*if (key == 'S')
-	{
-		frac.LoadShaderFromFile();
-		frac.Compile();
-
-		s[0].LoadShaderFromFile();
-		s[0].Compile();
-
-		cassini.LoadShaderFromFile();
-		cassini.Compile();
-	}*/
-
 	if (key == 'Q')
 		Time = 0;
 
@@ -1324,15 +1330,15 @@ void initRender(OpenGL *ogl)
 
 	glActiveTexture(GL_TEXTURE0);
 
-	loadModel("models\\Rocket_redy.obj", &Rocket.rocket);
+	loadModel("models\\Rocket_redy.obj_m", &Rocket.rocket);
 	Rocket.rocketTex.loadTextureFromFile("textures//RocketTex.bmp");
 	Rocket.rocketTex.bindTexture();
 
-	loadModel("models\\Button.obj", &Button.button);
+	loadModel("models\\Button.obj_m", &Button.button);
 	Button.buttonTex.loadTextureFromFile("textures//ButtonTex.bmp");
 	Button.buttonTex.bindTexture();
 
-	loadModel("models\\Land.obj", &land);
+	loadModel("models\\Land.obj_m", &land);
 	landTex.loadTextureFromFile("textures//LandTex.bmp");
 	landTex.bindTexture();
 
@@ -1485,7 +1491,7 @@ void RenderGUI(OpenGL *ogl)
 	ss << "X - уничтожение ракеты" << std::endl;
 	ss << "Ракета запущена - " << (launched ? "Да":"Нет") << std::endl;
 	ss << "Тяга = " << 60000 * Rocket.speed << std::endl;
-	ss << "Скорость = " << (Rocket.speed >= 1 ? Rocket.speed : 0)/5<< "км/с" << (Rocket.speed < 1 ?" (недостаточно тяги)":"") << std::endl;
+	ss << "Скорость = " << (Rocket.speed >= 1 ? Rocket.move.length() : 0)/50<< "км/с" << (Rocket.speed < 1 ?" (недостаточно тяги)":"") << std::endl;
 	ss << "Высота = " << Rocket.pos.Z()/2.2 << "км" << std::endl;
 
 	rec.setText(ss.str().c_str());
